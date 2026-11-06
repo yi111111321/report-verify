@@ -1,0 +1,16 @@
+{
+  "institution": {
+    "name": "上海市质量监督检验技术研究院",
+    "short_name": "上海市质检院",
+    "full_name_en": "Shanghai Institute of Quality Inspection and Technical Research",
+    "brand": "SQI",
+    "address": "上海市江月路900号"
+  },
+  "service": {
+    "base_url": "http://192.168.5.159:8787",
+    "listen_host": "0.0.0.0",
+    "listen_port": 8787,
+    "secret": "CHANGE-ME-before-production-4f9a2c7e1b8d",
+    "title": "报告查验系统"
+  }
+}

@@ -1,0 +1,6 @@
+__pycache__/
+_test/
+_*.py
+*.pyc
+.venv/
+.deploy/
