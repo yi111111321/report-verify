@@ -1,0 +1,20 @@
+{$DOMAIN} {
+	root * /srv
+	encode zstd gzip
+
+	try_files {path} {path}/index.html {path}.html
+
+	@missing not_found
+	handle @missing {
+		rewrite * /404.html
+		file_server
+	}
+
+	file_server
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "no-referrer"
+	}
+}
