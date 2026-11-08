@@ -118,8 +118,11 @@ def details(record: dict) -> str:
     rows = [
         ("样品名称", record.get("sample_name", "")),
         ("型号规格", record.get("model", "")),
+        ("商标", record.get("trademark", "")),
         ("委托单位", record.get("client", "")),
+        ("生产单位", record.get("manufacturer", "")),
         ("检验类别", record.get("category", "")),
+        ("检测依据", record.get("basis", "")),
         ("签发日期", record.get("issued", "")),
         ("检测结论", record.get("conclusion", "")),
     ]
