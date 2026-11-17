@@ -49,6 +49,19 @@ def main() -> None:
     with open(args.reports, encoding="utf-8") as fh:
         reports = json.load(fh)
 
+    # 二维码与报告编号绑定：锁定后改编号会让已印的码失效，这里直接拦住
+    lock_path = os.path.join(HERE, "report_lock.json")
+    if os.path.exists(lock_path):
+        with open(lock_path, encoding="utf-8") as fh:
+            locked = [str(n).strip().upper() for n in json.load(fh)]
+        present = {k.strip().upper() for k in reports}
+        missing = [n for n in locked if n not in present]
+        if missing:
+            sys.exit(
+                "错误：这些报告编号已被锁定，但报告库里找不到：" + "、".join(missing)
+                + "\n二维码和编号是绑定的，改编号等于换码。确实要换，请先改 report_lock.json。"
+            )
+
     inst = config["institution"]
     title = config["service"]["title"]
     base = args.base_url.rstrip("/")
